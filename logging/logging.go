@@ -1,9 +1,13 @@
-package utils
+package logging
 
 import (
 	"fmt"
 
 	"github.com/logrusorgru/aurora"
+)
+
+var (
+	DebugEnable bool
 )
 
 // Print the detailed content

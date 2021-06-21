@@ -1,7 +1,7 @@
 package main
 
-import "juby/utils"
+import "juby/cmd"
 
 func main() {
-	utils.Init()
+	cmd.Init()
 }

@@ -1,15 +1,7 @@
-x = """
-And	As	Boolean	ByRef	Byte	ByVal	Call	Case	Class	Const	
-Currency	Debug	Dim	Do	Double	Each	Else	ElseIf	Empty	End	
-EndIf	Enum	Eqv	Event	Exit	False	For	Function	Get	GoTo	
-If	Imp	Implements	In	Integer	Is	Let	Like	Long	Loop	
-LSet	Me	Mod	New	Next	Not	Nothing	Null	On	Option	
-Optional	Or	ParamArray	Preserve	Private	Public	RaiseEvent	ReDim	Rem	Resume	
-RSet	Select	Set	Shared	Single	Static	Stop	Sub	Then	To	
-True	Type	TypeOf	Until	Variant	Wend	While	With	Xor
-"""
+y = ["Begin", "Break", "Catch", "Class", "Continue", "Data", "Define", "Do", "DynamicParam", "Else ", " Elseif ", " End ", " Enum ", " Exit ", " Filter ", " Finally ", " For ", " ForEach ", " From ", " Function ", " Hidden ", " If ", " In ", " InlineScript ", " Param ", " Process ", " Return ", " Static ", " Switch ", " Throw ", " Trap ", " Try ", " Until ", " Using ", " Var ", "While"]
 
-a = []
-z = "abcdefghijklmnopqrstuvwxyz"
+z = []
+for i in y:
+    z.append(i.replace(" ", ""))
 
-print(x.split())
+print(z)

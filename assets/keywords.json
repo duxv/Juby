@@ -26,5 +26,21 @@
     {
         "name": "VBScript",
         "keys": ["And", "As", "Boolean", "ByRef", "Byte", "ByVal", "Call", "Case", "Class", "Const", "Currency", "Debug", "Dim", "Do", "Double", "Each", "Else", "ElseIf", "Empty", "End", "EndIf", "Enum", "Eqv", "Event", "Exit", "False", "For", "Function", "Get", "GoTo", "If", "Imp", "Implements", "In", "Integer", "Is", "Let", "Like", "Long", "Loop", "LSet", "Me", "Mod", "New", "Next", "Not", "Nothing", "Null", "On", "Option", "Optional", "Or", "ParamArray", "Preserve", "Private", "Public", "RaiseEvent", "ReDim", "Rem", "Resume", "RSet", "Select", "Set", "Shared", "Single", "Static", "Stop", "Sub", "Then", "To", "True", "Type", "TypeOf", "Until", "Variant", "Wend", "While", "With", "Xor"]
+    },
+    {
+        "name": "PHP",
+        "keys": ["__halt_compiler", "abstract", "and", "array", "as", "break", "callable", "case", "catch", "class", "clone", "const", "continue", "declare", "default", "die", "do", "echo", "else", "elseif", "empty", "enddeclare", "endfor", "endforeach", "endif", "endswitch", "endwhile", "eval", "exit", "extends", "final", "finally", "fn", "for", "foreach", "function", "global", "goto", "if", "implements", "include", "include_once", "instanceof", "insteadof", "interface", "isset", "list", "match", "namespace", "new", "or", "print", "private", "protected", "public", "require", "require_once", "return", "static", "switch", "throw", "trait", "try", "unset", "use", "var", "while", "xor"]
+    }, 
+    {
+        "name": "C#",
+        "keys": ["abstract", "add", "as", "ascending", "async", "await", "base", "bool", "break", "by", "byte", "case", "catch", "char", "checked", "class", "const", "continue", "decimal", "default", "delegate", "descending", "do", "double", "dynamic", "else", "enum", "equals", "explicit", "extern", "false", "finally", "fixed", "float", "for", "foreach", "from", "get", "global", "goto", "group", "if", "implicit", "in", "int", "interface", "internal", "into", "is", "join", "let", "lock", "long", "namespace", "new", "null", "object", "on", "operator", "orderby", "out", "override", "params", "partial", "private", "protected", "public", "readonly", "ref", "remove", "return", "sbyte", "sealed", "select", "set", "short", "sizeof", "stackalloc", "static", "string", "struct", "switch", "this", "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort", "using", "value", "var", "virtual", "void", "volatile", "where", "while", "yield"]
+    },
+    {
+        "name":"Rust",
+        "keys":["as","use","externcrate","break","const","continue","crate","else","if","iflet","enum","extern","false","fn","for","if","impl","in","for","let","loop","match","mod","move","mut","pub","impl","ref","return","Self","self","static","struct","super","trait","true","type","unsafe","use","where","while","abstract","alignof","become","box","do","final","macro","offsetof","override","priv","proc","pure","sizeof","typeof","unsized","virtual","yield"]
+    },
+    {
+        "name":"Powershell",
+        "keys":["Begin", "Break", "Catch", "Class", "Continue", "Data", "Define", "Do", "DynamicParam", "Else", "Elseif", "End", "Enum", "Exit", "Filter", "Finally", "For", "ForEach", "From", "Function", "Hidden", "If", "In", "InlineScript", "Param", "Process", "Return", "Static", "Switch", "Throw", "Trap", "Try", "Until", "Using", "Var", "While"]
     }
 ]

@@ -17,8 +17,7 @@ var (
 
 func findExt() {
 	extensionArr := strings.Split(FilePath, ".")
-	extension := extensionArr[len(extensionArr)-1]
-	extension = "." + extension
+	extension := "." + extensionArr[len(extensionArr)-1]
 	log.Debug(fmt.Sprintf("File extension is %s", extension))
 	result, err := read.GetExtensionType(extension)
 	log.Debug(fmt.Sprint(err))

@@ -38,5 +38,5 @@ func GetExtensionType(extension string) (ext Extension, er error) {
 			}
 		}
 	}
-	return result, errors.New("File extension information not found")
+	return result, errors.New("file extension information not found")
 }

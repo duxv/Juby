@@ -69,7 +69,7 @@ func FindLanguage(content string) (map[string]int, error) {
 				if key == "" || ContainsArr(key, scannedKeys) {
 					continue
 				}
-				if strings.Contains(key, langs[j].Keywords[i]) {
+				if key == langs[j].Keywords[i] {
 					langs[j].Keywords[i] = key
 					langs[j].Found += 1
 					scannedKeys = append(scannedKeys, langs[j].Keywords[i])

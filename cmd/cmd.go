@@ -48,12 +48,10 @@ func Init() {
 		log.Error(fmt.Sprint(err))
 		os.Exit(0)
 	}
-	for lang, results := range langs {
-		if results[0] == 0 {
+	for lang, result := range langs {
+		if result == 0 {
 			continue
 		}
-		totalkeys := results[0] + results[1]
-		percentage := float32(results[0] / totalkeys * 100)
-		log.Info(fmt.Sprintf("%f percent of the keywords match %s", percentage, lang))
+		log.Info(fmt.Sprintf("Found %d valid %s keywords", result, lang))
 	}
 }

@@ -39,7 +39,7 @@ func ContainsArr(key string, stringz []string) bool {
 	}
 	return false
 }
-func FindLanguage(content string) (map[string][]int, error) {
+func FindLanguage(content string) (map[string]int, error) {
 	var langs []Language
 	// Count of the keys checked in the content
 	scannedKeysCount := 0
@@ -47,6 +47,7 @@ func FindLanguage(content string) (map[string][]int, error) {
 	var inString string
 	var quotes = []string{"'", "\""}
 	keywords, err := Readfile("./assets/keywords.json")
+	keywords = strings.NewReplacer("\n", " ", ";", " ").Replace(keywords)
 	if err != nil {
 		return nil, err
 	}
@@ -68,25 +69,20 @@ func FindLanguage(content string) (map[string][]int, error) {
 				if key == "" || ContainsArr(key, scannedKeys) {
 					continue
 				}
-				if key == langs[j].Keywords[i] {
+				if strings.Contains(key, langs[j].Keywords[i]) {
 					langs[j].Keywords[i] = key
 					langs[j].Found += 1
 					scannedKeys = append(scannedKeys, langs[j].Keywords[i])
 					logging.Debug(fmt.Sprintf("Found key %s from programming language %s", langs[j].Keywords[i], langs[j].Name))
-				} else {
-					langs[j].NotFound += 1
 				}
 			}
 		}
 		scannedKeysCount += 1
 	}
 	// Make the result map
-	result := make(map[string][]int)
+	result := make(map[string]int)
 	for _, lang := range langs {
-		result[lang.Name] = []int{lang.Found, lang.NotFound}
-	}
-	for key, value := range result {
-		fmt.Printf("%s %v", key, value)
+		result[lang.Name] = lang.Found
 	}
 	return result, nil
 }

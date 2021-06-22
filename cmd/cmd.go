@@ -53,7 +53,7 @@ func Init() {
 			continue
 		}
 		totalkeys := results[0] + results[1]
-		percentage := results[0] / totalkeys
-		log.Info(fmt.Sprintf("%d of the keywords match %s", percentage, lang))
+		percentage := float32(results[0] / totalkeys * 100)
+		log.Info(fmt.Sprintf("%f percent of the keywords match %s", percentage, lang))
 	}
 }

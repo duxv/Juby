@@ -7,6 +7,7 @@ import (
 	log "juby/logging"
 	"juby/read"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -48,10 +49,17 @@ func Init() {
 		log.Error(fmt.Sprint(err))
 		os.Exit(0)
 	}
-	for lang, result := range langs {
-		if result == 0 {
+	keys := make([]string, 0, len(langs))
+	for key := range langs {
+		keys = append(keys, key)
+	}
+	sort.Slice(keys, func(i, j int) bool {
+		return langs[keys[i]] > langs[keys[j]]
+	})
+	for _, key := range keys {
+		if langs[key] == 0 {
 			continue
 		}
-		log.Info(fmt.Sprintf("Found %d valid %s keywords", result, lang))
+		log.Info(fmt.Sprintf("Found %d valid %s keywords", langs[key], key))
 	}
 }

@@ -3,14 +3,17 @@ package read
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
+	"juby/logging"
 	"strings"
 )
 
 type Language struct {
 	Name     string
-	Score    int
-	Keywords []string
+	Found    int
+	NotFound int
+	Keywords []string `json:"keys"`
 }
 
 type Extension struct {
@@ -28,13 +31,24 @@ func Contains(key string, substrings []string) bool {
 	return false
 }
 
-func FindLanguage(content string) error {
+func ContainsArr(key string, stringz []string) bool {
+	for _, str := range stringz {
+		if str == key {
+			return true
+		}
+	}
+	return false
+}
+func FindLanguage(content string) (map[string][]int, error) {
 	var langs []Language
+	// Count of the keys checked in the content
+	scannedKeysCount := 0
+	var scannedKeys []string
 	var inString string
 	var quotes = []string{"'", "\""}
 	keywords, err := Readfile("./assets/keywords.json")
 	if err != nil {
-		return err
+		return nil, err
 	}
 	json.Unmarshal([]byte(keywords), &langs)
 	for _, key := range strings.Split(content, " ") {
@@ -49,9 +63,32 @@ func FindLanguage(content string) error {
 		if inString != "" {
 			continue
 		}
-		// TODO: check all programming languages and do an algorithm to decide which programming language is
+		for j := 0; j < len(langs); j++ {
+			for i := 0; i < len(langs[j].Keywords); i++ {
+				if key == "" || ContainsArr(key, scannedKeys) {
+					continue
+				}
+				if key == langs[j].Keywords[i] {
+					langs[j].Keywords[i] = key
+					langs[j].Found += 1
+					scannedKeys = append(scannedKeys, langs[j].Keywords[i])
+					logging.Debug(fmt.Sprintf("Found key %s from programming language %s", langs[j].Keywords[i], langs[j].Name))
+				} else {
+					langs[j].NotFound += 1
+				}
+			}
+		}
+		scannedKeysCount += 1
 	}
-	return nil
+	// Make the result map
+	result := make(map[string][]int)
+	for _, lang := range langs {
+		result[lang.Name] = []int{lang.Found, lang.NotFound}
+	}
+	for key, value := range result {
+		fmt.Printf("%s %v", key, value)
+	}
+	return result, nil
 }
 
 func Readfile(filepath string) (res string, er error) {

@@ -41,6 +41,19 @@ func Init() {
 		log.Error(fmt.Sprint(err))
 		os.Exit(0)
 	}
-	FileContent = string(byteContent)
 	findExt()
+	FileContent = string(byteContent)
+	langs, err := read.FindLanguage(FileContent)
+	if err != nil {
+		log.Error(fmt.Sprint(err))
+		os.Exit(0)
+	}
+	for lang, results := range langs {
+		if results[0] == 0 {
+			continue
+		}
+		totalkeys := results[0] + results[1]
+		percentage := results[0] / totalkeys
+		log.Info(fmt.Sprintf("%d of the keywords match %s", percentage, lang))
+	}
 }

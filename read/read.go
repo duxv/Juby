@@ -47,7 +47,7 @@ func FindLanguage(content string) (map[string]int, error) {
 	var inString string
 	var quotes = []string{"'", "\"", `"""`, "`"}
 	keywords, err := Readfile("./assets/keywords.json")
-	keywords = strings.NewReplacer("\n", " ", ";", " ").Replace(keywords)
+	content = strings.NewReplacer("\n", " ", ";", " ").Replace(content)
 	if err != nil {
 		return nil, err
 	}
